@@ -1,21 +1,21 @@
 package GIK2H9.Lab2.Services;
 
-import GIK2H9.Lab2.Models.TestUser;
-import GIK2H9.Lab2.Repositories.UserSaverStrategy;
+import GIK2H9.Lab2.Models.User;
+import GIK2H9.Lab2.Repositories.TestUserSaverStrategy;
 
 public class SaverContext {
-    private UserSaverStrategy userSaverStrategy;
+    private TestUserSaverStrategy testUserSaverStrategy;
 
-    public SaverContext(UserSaverStrategy userSaverStrategy) {
-        this.userSaverStrategy = userSaverStrategy;
+    public SaverContext(TestUserSaverStrategy testUserSaverStrategy) {
+        this.testUserSaverStrategy = testUserSaverStrategy;
     }
 
-    public void setUserSaverStrategy(UserSaverStrategy userSaverStrategy) {
-        this.userSaverStrategy = userSaverStrategy;
+    public void setUserSaverStrategy(TestUserSaverStrategy testUserSaverStrategy) {
+        this.testUserSaverStrategy = testUserSaverStrategy;
     }
 
     public void saveTestUser(String username, String password, String role, Integer enabled) {
-        TestUser testUser = new TestUser(username,password,role,enabled);
-        this.userSaverStrategy.save(testUser);
+        User user = new User(username,password,role,enabled);
+        this.testUserSaverStrategy.save(user);
     }
 }

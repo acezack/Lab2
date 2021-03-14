@@ -1,7 +1,5 @@
 package GIK2H9.Lab2;
 
-import GIK2H9.Lab2.Models.Roles;
-import GIK2H9.Lab2.Models.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
