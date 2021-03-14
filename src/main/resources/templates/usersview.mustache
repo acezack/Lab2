@@ -9,21 +9,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Add</title>
+    <title>Our users</title>
 </head>
 <body>
-<div class="container">
-    <h2>Add view</h2>
-    <a href="/logout">Logout</a>
-    <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title">
+
+<div style="padding-top: 10px" class="container">
+    <h2 style="display: inline;">Users</h2>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <form action="/">
+            <button class="btn btn-primary" type="submit">Home</button>
+        </form>
+        <form action="/users/add" style="display: inline;">
+            <button style="margin: 0px 20px 10px" class="btn btn-primary" type="submit" value="Add new user">Add new
+            </button>
+        </form>
+        <form action="/logout">
+            <button class="btn btn-primary" type="submit">Log out</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="body" class="form-label">Body</label>
-        <textarea class="form-control" id="body" rows="3"></textarea>
-    </div>
+    <table class="table table-striped">
+        <thead style="font-weight: bold">
+        <tr>
+            <td>Username</td>
+            <td>Role</td>
+            <td>Enabled</td>
+        </tr>
+        </thead>
+        {{#users}}
+            <tr>
+                <td>{{username}}</td>
+                <td>{{role}}</td>
+                <td>{{enabled}}</td>
+            </tr>
+        {{/users}}
+    </table>
 </div>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

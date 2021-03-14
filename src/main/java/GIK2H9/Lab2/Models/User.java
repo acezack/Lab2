@@ -12,4 +12,25 @@ public class User {
         this.role = role;
         this.enabled = enabled;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public Integer getEnabled() {
+        return enabled;
+    }
+
+    @Override
+    public String toString() {
+        return getUsername() + ";" + getRole() + ";" + getEnabled();
+    }
 }

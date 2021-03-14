@@ -3,10 +3,10 @@ package GIK2H9.Lab2.Services;
 import GIK2H9.Lab2.Models.User;
 import GIK2H9.Lab2.Repositories.TestUserSaverStrategy;
 
-public class SaverContext {
+public class UserSaverContext {
     private TestUserSaverStrategy testUserSaverStrategy;
 
-    public SaverContext(TestUserSaverStrategy testUserSaverStrategy) {
+    public UserSaverContext(TestUserSaverStrategy testUserSaverStrategy) {
         this.testUserSaverStrategy = testUserSaverStrategy;
     }
 
