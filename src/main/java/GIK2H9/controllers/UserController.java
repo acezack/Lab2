@@ -1,19 +1,12 @@
 package GIK2H9.controllers;
 
-
-import GIK2H9.entity.Comment;
 import GIK2H9.repository.CommentRepository;
 import GIK2H9.repository.PostRepository;
-import GIK2H9.repository.TextSaveStrategy;
 import GIK2H9.repository.UserRepository;
-import GIK2H9.services.CommentSaveStrategy;
-import GIK2H9.services.SaveContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 

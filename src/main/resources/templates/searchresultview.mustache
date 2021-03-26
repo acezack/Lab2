@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Update post</title>
+    <title>All comments on a post</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -30,23 +30,45 @@
         </div>
     </div>
 </nav>
-<div class="container" style="width: 500px; margin: auto;">
-    <h1>Update post</h1>
+<div class="container">
+    <h2>Search keyword: {{keyword}}</h2>
+    <h2>Users found:</h2>
+    <ol>
+        {{#users}}
+            <li>
+                {{name}} <i class="small">{{email}}</i>
+                <a href="/comment/user/{{u_id}}">See comments</a>
+            </li>
+        {{/users}}
+        {{^users}}
+            <li>None.</li>
+        {{/users}}
+    </ol>
+    <h2>Posts found:</h2>
+    <ol>
+        {{#posts}}
+            <li>
+                {{title}} <i class="small">by {{user.name}} at {{dateTime.toLocalTime.getHour}}:{{dateTime.toLocalTime.getMinute}} on {{dateTime.toLocalDate}}</i>
+            </li>
+        {{/posts}}
+        {{^posts}}
+            <li>None.</li>
+        {{/posts}}
+    </ol>
 
-    <form method="POST" action="/posts/update/{{post.p_id}}">
-        <input type="hidden" name="p_id" class="form-control" value="{{post.p_id}}">
-        <br>
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" value="{{post.title}}">
+    <h2>Comments found:</h2>
+    <ol>
+        {{#comments}}
+            <li>
+                {{text}} <i class="small">by {{user.name}} at {{dateTime.toLocalTime.getHour}}:{{dateTime.toLocalTime.getMinute}} on {{dateTime.toLocalDate}}</i>
+            </li>
+        {{/comments}}
+        {{^comments}}
+            <li>None.</li>
+        {{/comments}}
+    </ol>
 
-        <label>Text</label>
-        <textarea style="height: 500px" name="text" class="form-control">{{post.text}}</textarea>
-        <br>
-        <button class="btn btn-primary" type="submit">Update post</button>
-
-    </form>
-
-
+    <a href="/posts/page/0">Back to front page</a>
 </div>
 </body>
 </html>

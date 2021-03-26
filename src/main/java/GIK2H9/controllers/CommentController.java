@@ -29,8 +29,14 @@ PostRepository postRepository;
 CommentRepository commentRepository;
 
     @RequestMapping("/comment/user")
-    public String showBlogger(Model model) {
+    public String showLoggedInUsersComments(Model model) {
         model.addAttribute("comments", commentRepository.findAllByUser(userRepository.findByEmail(sec.loggedInUser())));
+        return "commentallbyuserview";
+    }
+
+    @RequestMapping("/comment/user/{u_id}")
+    public String showUsersComments(Model model, @PathVariable Integer u_id) {
+        model.addAttribute("comments", commentRepository.findAllByUser(userRepository.findById(u_id).get()));
         return "commentallbyuserview";
     }
     //show all comments
@@ -47,7 +53,17 @@ CommentRepository commentRepository;
     //add comment
     @RequestMapping("/comment/add/{p_id}")
     public String addComment(Model model, @PathVariable Integer p_id) {
-        model.addAttribute("post", postRepository.findById(p_id).get());
+        Post post = postRepository.findById(p_id).get();
+        User user = userRepository.findByEmail(sec.loggedInUser());
+        Comment comment = commentRepository.findByUserAndPost(user, post);
+        System.out.println(comment);
+        model.addAttribute("post", post);
+        if (comment == null) {
+            model.addAttribute("exists", false);
+        }
+        else {
+            model.addAttribute("exists", true);
+        }
         return "commentaddview";
     }
 
