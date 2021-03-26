@@ -1,7 +1,7 @@
 package GIK2H9.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +11,11 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer p_id;
+    @Column(length = 64)
     private String title;
-    private String description;
-    private LocalDate date;
+    @Column(length = 3000)
+    private String text;
+    private LocalDateTime dateTime;
     private Double grading;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -40,9 +42,9 @@ public class Post {
 
     }
 
-    public Post(String title, String description) {
+    public Post(String title, String text) {
         this.title = title;
-        this.description = description;
+        this.text = text;
     }
 
     public Integer getP_id() {
@@ -53,12 +55,12 @@ public class Post {
         this.p_id = p_id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getText() {
+        return text;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public User getUser() {
@@ -85,12 +87,12 @@ public class Post {
         this.comments = comments;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(LocalDate createdPost) {
-        this.date = createdPost;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public Double getGrading() {

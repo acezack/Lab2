@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Add comment</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
 </nav>
 <div class="container" style="width: 500px; margin: auto;">
     <h1>Add your comment!</h1>
-    <form method="POST" action="/addcomment/{{post.p_id}}">
+    <form method="POST" action="/comment/add/{{post.p_id}}">
         <input type="hidden" name="p_id" class="form-control" value="{{post.p_id}}">
         <br>
         <label>Write your comment here:</label>

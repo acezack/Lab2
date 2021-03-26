@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Products</title>
+    <title>All posts</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -38,13 +38,25 @@
             <div class="card" style="margin: 30px">
                 <div class="card-body">
                     <h4>{{title}}</h4>
-                    <p>{{description}}</p>
-                    <p>How many comments: {{comments.size}}</p>
-
-                    <p><a href="/posts/allcomments/{{p_id}}">See all comments</a></p>
-                    <br>
+                    <p>{{text}}</p>
+                    <p>Grading: {{grading}}</p>
+                    <p>Comments: {{comments.size}}</p>
+                    <p><a href="/posts/comments/{{p_id}}">See all comments</a></p>
                     {{#no}}
-                    <a href="/addcomment/{{p_id}}">Add a comment</a>
+                    <br>
+                    <a href="/comment/add/{{p_id}}">Add a comment</a>
+                    <br>
+                    <br>
+                    <form method="POST" action="/posts/grading/{{p_id}}">
+                        <select name="grading{{p_id}}">
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                        <button class="btn btn-primary" type="submit">Grade</button>
+                    </form>
                     {{/no}}
                 </div>
             </div>

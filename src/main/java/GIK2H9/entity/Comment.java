@@ -1,7 +1,7 @@
 package GIK2H9.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -10,9 +10,9 @@ public class Comment{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer b_id;
+    @Column(length = 3000)
     private String text;
-    private LocalDate date;
-    private Double grading;
+    private LocalDateTime date;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -57,23 +57,15 @@ public class Comment{
         return text;
     }
 
-    public void setText(String commenttext) {
-        this.text = commenttext;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDateTime() {
         return date;
     }
 
-    public void setDate(LocalDate createdComment) {
-        this.date = createdComment;
-    }
-
-    public Double getGrading() {
-        return grading;
-    }
-
-    public void setGrading(Double grading) {
-        this.grading = grading;
+    public void setDateTime(LocalDateTime date) {
+        this.date = date;
     }
 }

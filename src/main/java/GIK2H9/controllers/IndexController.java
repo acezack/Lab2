@@ -13,7 +13,6 @@ public class IndexController {
     @Autowired
     private UserRepository userRepository;
 
-
     @Autowired
     private PasswordEncoder encoder;
 

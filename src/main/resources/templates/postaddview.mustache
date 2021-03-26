@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Add a post</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -26,13 +26,13 @@
     </div>
 </nav>
 <div class="container" style="width: 500px; margin: auto;">
-    <h1>Add post!</h1>
+    <h1>Add a post!</h1>
     <form method="POST" action="/posts/add">
         <label>Title</label>
         <input type="text" name="title" class="form-control">
 
-        <label>Description</label>
-        <textarea type="text" name="description" class="form-control" rows="3"></textarea>
+        <label>Text</label>
+        <textarea type="text" name="text" class="form-control" rows="3"></textarea>
         <br>
         <button class="btn btn-primary" type="submit">Submit post</button>
     </form><br>

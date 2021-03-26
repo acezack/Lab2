@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Update post</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
     </div>
 </nav>
 <div class="container" style="width: 500px; margin: auto;">
-    <h1>Update Product</h1>
+    <h1>Update post</h1>
 
     <form method="POST" action="/posts/update/{{post.p_id}}">
         <input type="hidden" name="p_id" class="form-control" value="{{post.p_id}}">
@@ -35,10 +35,10 @@
         <label>Name</label>
         <input type="text" name="name" class="form-control" value="{{post.title}}">
 
-        <label>Description</label>
-        <input type="text" name="description" class="form-control" value="{{post.description}}">
+        <label>Text</label>
+        <textarea style="height: 500px" name="text" class="form-control">{{post.text}}</textarea>
         <br>
-        <button class="btn btn-primary" type="submit">Add change</button>
+        <button class="btn btn-primary" type="submit">Update post</button>
 
     </form>
 

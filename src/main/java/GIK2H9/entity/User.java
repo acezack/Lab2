@@ -49,16 +49,16 @@ public class User {
         posts.add(post);
         post.setUser(this);
     }
-    public void removeProduct(Post post) {
+    public void removePost(Post post) {
        posts.remove(post);
         post.setUser(this);
     }
 
-    public void addBid(Comment comment) {
+    public void addComment(Comment comment) {
         comments.add(comment);
         comment.setUser(this);
     }
-    public void removeBid(Comment comment) {
+    public void removeComment(Comment comment) {
         comments.remove(comment);
        comment.setUser(this);
     }
