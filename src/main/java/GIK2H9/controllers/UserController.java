@@ -30,9 +30,9 @@ public class UserController {
     CommentRepository commentRepository;
 
 
-    //Visas i tabellen i adminview
-    @RequestMapping("/admin")
-    public String showAdmin(Model model) {
+    //Visas i tabellen i bloggerview
+    @RequestMapping("/blogger")
+    public String showBlogger(Model model) {
         model.addAttribute("posts", postRepository.findAll());
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("comments", commentRepository.findAll());
@@ -43,14 +43,14 @@ public class UserController {
     PasswordEncoder encoder;
 
     //delete comment
-    @GetMapping("/admin/comment/delete/{b_id}")
+    @GetMapping("/blogger/comment/delete/{b_id}")
     public String deleteCommentById(@PathVariable Integer b_id) {
         Comment comment = commentRepository.findById(b_id).get();
         CommentSaveStrategy commentSaveStrategy = new TextSaveStrategy();
         SaveContext context = new SaveContext(commentSaveStrategy);
         context.save(comment);
         commentRepository.deleteById(b_id);
-        return "redirect:/admin";
+        return "redirect:/blogger";
     }
 
 

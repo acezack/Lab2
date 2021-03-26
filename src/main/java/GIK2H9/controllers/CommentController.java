@@ -31,7 +31,7 @@ CommentRepository commentRepository;
         Post post = postRepository.findById(p_id).get();
         List<Comment> comments = commentRepository.findAllByPost(post);
         model.addAttribute("comments", comments);
-        return "postallbidsview";
+        return "postallcommentsview";
     }
     @Autowired
     SecurityController sec = new SecurityController();
@@ -48,9 +48,10 @@ CommentRepository commentRepository;
             User user = userRepository.findByEmail(new SecurityController().loggedInUser());
             LocalDate date = LocalDate.now();
             Comment comment = new Comment();
-            comment.setCommenttext(allFormRequestParams.get("comment"));
+            comment.setText(allFormRequestParams.get("comment"));
             comment.setUser(user);
-            comment.setCreatedComment(date);
+            comment.setDate(date);
+            comment.setGrading((double) 0);
             Post post = postRepository.findById(p_id).get();
             post.addComment(comment);
             postRepository.save(post);

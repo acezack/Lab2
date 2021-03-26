@@ -19,9 +19,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home</a>
-            <a class="nav-item nav-link" href="/posts/add">Add product</a>
-            <a class="nav-item nav-link" href="/posts/page/0">All products</a>
-            <a class="nav-item nav-link" href="/posts/user/page/0">My products</a>
+            <a class="nav-item nav-link" href="/posts/add">Add post</a>
+            <a class="nav-item nav-link" href="/posts/page/0">All posts</a>
+            <a class="nav-item nav-link" href="/posts/user/page/0">My posts</a>
             <a class="nav-item nav-link" href="/logout">Log out</a>
         </div>
     </div>
@@ -31,7 +31,7 @@
     <ol>
         {{#comments}}
             <li>
-                {{commenttext}} <i class="small"> by {{user.email}}</i>
+                {{text}} <i class="small"> by {{user.email}}</i>
             </li>
         {{/comments}}
     </ol>

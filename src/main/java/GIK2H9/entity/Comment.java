@@ -10,8 +10,9 @@ public class Comment{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer b_id;
-    private String commenttext;
-    private LocalDate createdComment;
+    private String text;
+    private LocalDate date;
+    private Double grading;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -24,8 +25,8 @@ public class Comment{
 
     }
 
-    public Comment(String commenttext) {
-        this.commenttext = commenttext;
+    public Comment(String text) {
+        this.text = text;
     }
 
     public User getUser() {
@@ -44,7 +45,6 @@ public class Comment{
         this.b_id = b_id;
     }
 
-
     public Post getPost() {
         return post;
     }
@@ -53,19 +53,27 @@ public class Comment{
         this.post = post;
     }
 
-    public String getCommenttext() {
-        return commenttext;
+    public String getText() {
+        return text;
     }
 
-    public void setCommenttext(String commenttext) {
-        this.commenttext = commenttext;
+    public void setText(String commenttext) {
+        this.text = commenttext;
     }
 
-    public LocalDate getCreatedComment() {
-        return createdComment;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setCreatedComment(LocalDate createdComment) {
-        this.createdComment = createdComment;
+    public void setDate(LocalDate createdComment) {
+        this.date = createdComment;
+    }
+
+    public Double getGrading() {
+        return grading;
+    }
+
+    public void setGrading(Double grading) {
+        this.grading = grading;
     }
 }

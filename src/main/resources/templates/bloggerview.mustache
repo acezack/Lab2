@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin</title>
+    <title>Blogger</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -69,11 +69,11 @@
         {{#comments}}
             <tr>
                 <th scope="row">{{b_id}}</th>
-                <td>{{commenttext}}</td>
+                <td>{{text}}</td>
                 <td>{{post.title}}</td>
                 <td>{{post.p_id}}</td>
                 <td>{{user.email}}</td>
-                <td><a href="/admin/comment/delete/{{b_id}}">Delete</a> </td>
+                <td><a href="/blogger/comment/delete/{{b_id}}">Delete</a> </td>
             </tr>
         {{/comments}}
         </tbody>

@@ -18,10 +18,10 @@ public class TextSaveStrategy implements CommentSaveStrategy {
         BufferedWriter writer;
         try {
             writer = Files.newBufferedWriter(Paths.get("comment.txt"), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
-            writer.write(comment.getCommenttext());
+            writer.write(comment.getText());
             writer.newLine();
             writer.close();
-            System.out.println(comment.getCommenttext());
+            System.out.println(comment.getText());
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

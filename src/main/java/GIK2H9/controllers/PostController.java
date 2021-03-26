@@ -113,7 +113,7 @@ public class PostController {
         user.addPost(post);
         userRepository.save(user);
         if (user.getRole().equals("ROLE_BLOGGER")) {
-            return "redirect:/admin";
+            return "redirect:/blogger";
         } else {
             return "redirect:/posts/page/0";
         }
@@ -123,7 +123,7 @@ public class PostController {
     @GetMapping("/posts/delete/{p_id}")
     public String deleteProductById(@PathVariable Integer p_id) {
         postRepository.deleteById(p_id);
-        return "redirect:/admin";
+        return "redirect:/blogger";
     }
 
     //update post
@@ -139,7 +139,7 @@ public class PostController {
         post.setTitle(allFormRequestParams.get("name"));
         post.setDescription(allFormRequestParams.get("description"));
         postRepository.save(post);
-        return "redirect:/admin";
+        return "redirect:/blogger";
     }
 
 }//end Controller class

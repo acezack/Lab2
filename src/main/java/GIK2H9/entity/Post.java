@@ -13,7 +13,8 @@ public class Post {
     private Integer p_id;
     private String title;
     private String description;
-    private LocalDate createdPost;
+    private LocalDate date;
+    private Double grading;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
@@ -52,7 +53,6 @@ public class Post {
         this.p_id = p_id;
     }
 
-
     public String getDescription() {
         return description;
     }
@@ -85,11 +85,19 @@ public class Post {
         this.comments = comments;
     }
 
-    public LocalDate getCreatedPost() {
-        return createdPost;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setCreatedPost(LocalDate createdPost) {
-        this.createdPost = createdPost;
+    public void setDate(LocalDate createdPost) {
+        this.date = createdPost;
+    }
+
+    public Double getGrading() {
+        return grading;
+    }
+
+    public void setGrading(Double grading) {
+        this.grading = grading;
     }
 }
