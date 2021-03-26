@@ -1,8 +1,7 @@
-package hogskolan.blog.entity;
+package GIK2H9.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
 
 
 @Entity

@@ -1,4 +1,4 @@
-package hogskolan.blog.controllers;
+package GIK2H9.controllers;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

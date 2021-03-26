@@ -1,4 +1,4 @@
-package hogskolan.blog.entity;
+package GIK2H9.entity;
 
 public class Role {
     public String role;

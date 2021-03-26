@@ -1,13 +1,13 @@
-package hogskolan.blog.controllers;
+package GIK2H9.controllers;
 
-import hogskolan.blog.entity.Post;
-import hogskolan.blog.entity.User;
-import hogskolan.blog.repository.PostRepository;
-import hogskolan.blog.repository.UserRepository;
+import GIK2H9.entity.Post;
+import GIK2H9.entity.User;
+import GIK2H9.repository.PostRepository;
+import GIK2H9.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

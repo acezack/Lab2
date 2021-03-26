@@ -1,7 +1,7 @@
-package hogskolan.blog.controllers;
+package GIK2H9.controllers;
 
-import hogskolan.blog.entity.User;
-import hogskolan.blog.repository.UserRepository;
+import GIK2H9.entity.User;
+import GIK2H9.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
