@@ -58,10 +58,10 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Comment</th>
-            <th scope="col">Post ID</th>
-            <th scope="col">User</th>
+            <th scope="col">Title</th>
+            <th scope="col">User_id</th>
             <th scope="col">Email</th>
-            <th scope="col">Datel</th>
+            <th scope="col">Date</th>
             <th scope="col">Manage</th>
         </tr>
         </thead>
@@ -74,6 +74,7 @@
                 <td>{{post.p_id}}</td>
                 <td>{{user.email}}</td>
                 <td><a href="/blogger/comment/delete/{{b_id}}">Delete</a> </td>
+                <td>{{createdComment}}</td>
             </tr>
         {{/comments}}
         </tbody>

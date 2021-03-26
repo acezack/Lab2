@@ -1,18 +1,12 @@
 As a blogger, I want to:
-	a.	Write blogs
-	b.	Manage my blogs: add delete and update them.
-	c.	Pagination on suitable webpages.
-	d.	Remove, censor unappropriated comments from my followers.
-	i.	When removed from db also add this removed comment to a textfile for backup.
+
 	e.	For each blog see comments from my followers. 
 		Comments should be sorted by date, newest first. Then on grading, highest first
-	f.	How many comments there are for each blogpost
 	g.	Search a follower and see all his/her comments
 	h.	Can you come up with other functionalities please add them
 
 
 As a follower, I want to
-	a.	Write comments to a blog post.
 	b.	Add grading for a blog post. 1-5
 	c.	Manage my comments: add delete and update them.
 	d.	See other followers’ comments for blogposts. Comments should be sorted by date, newest first.
