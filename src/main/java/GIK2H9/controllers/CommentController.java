@@ -31,7 +31,7 @@ CommentRepository commentRepository;
         Post post = postRepository.findById(p_id).get();
         List<Comment> comments = commentRepository.findAllByPost(post);
         model.addAttribute("comments", comments);
-        return "postallbidsview";
+        return "postallcommentssview";
     }
     @Autowired
     SecurityController sec = new SecurityController();
