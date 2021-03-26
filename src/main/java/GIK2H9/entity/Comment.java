@@ -9,10 +9,10 @@ public class Comment{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer b_id;
+    private Integer c_id;
     @Column(length = 3000)
     private String text;
-    private LocalDateTime date;
+    private LocalDateTime dateTime;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -22,7 +22,6 @@ public class Comment{
     private User user;
 
     public Comment() {
-
     }
 
     public Comment(String text) {
@@ -37,12 +36,12 @@ public class Comment{
         this.user = user;
     }
 
-    public Integer getB_id() {
-        return b_id;
+    public Integer getC_id() {
+        return c_id;
     }
 
-    public void setB_id(Integer b_id) {
-        this.b_id = b_id;
+    public void setC_id(Integer c_id) {
+        this.c_id = c_id;
     }
 
     public Post getPost() {
@@ -62,10 +61,10 @@ public class Comment{
     }
 
     public LocalDateTime getDateTime() {
-        return date;
+        return dateTime;
     }
 
-    public void setDateTime(LocalDateTime date) {
-        this.date = date;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }

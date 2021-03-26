@@ -20,9 +20,14 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home</a>
-            <a class="nav-item nav-link" href="/posts/add">Add post</a>
+            {{^follower}}
+                <a class="nav-item nav-link" href="/posts/add">Add post</a>
+                <a class="nav-item nav-link" href="/posts/user/page/0">My posts</a>
+            {{/follower}}
+            {{#follower}}
+                <a class="nav-item nav-link" href="/comment/user/">My comments</a>
+            {{/follower}}
             <a class="nav-item nav-link" href="/posts/page/0">All posts</a>
-            <a class="nav-item nav-link" href="/posts/user/page/0">My posts</a>
             <a class="nav-item nav-link" href="/logout">Log out</a>
 
         </div>
@@ -41,23 +46,23 @@
                     <p>{{text}}</p>
                     <p>Grading: {{grading}}</p>
                     <p>Comments: {{comments.size}}</p>
-                    <p><a href="/posts/comments/{{p_id}}">See all comments</a></p>
-                    {{#no}}
-                    <br>
-                    <a href="/comment/add/{{p_id}}">Add a comment</a>
-                    <br>
-                    <br>
-                    <form method="POST" action="/posts/grading/{{p_id}}">
-                        <select name="grading{{p_id}}">
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                        <button class="btn btn-primary" type="submit">Grade</button>
-                    </form>
-                    {{/no}}
+                    <p><a href="/posts/comment/{{p_id}}">See all comments</a></p>
+                    {{#follower}}
+                        <br>
+                        <a href="/comment/add/{{p_id}}">Add a comment</a>
+                        <br>
+                        <br>
+                        <form method="POST" action="/posts/grading/{{p_id}}">
+                            <select name="grading{{p_id}}">
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                            <button class="btn btn-primary" type="submit">Grade</button>
+                        </form>
+                    {{/follower}}
                 </div>
             </div>
         {{/posts}}

@@ -26,13 +26,13 @@ public class PostController {
     private UserRepository userRepository;
 
     //Show all posts med paging
-   @GetMapping("/posts/page/{pageno}")
+    @GetMapping("/posts/page/{pageno}")
     public String showPage(@PathVariable() Integer pageno, Model model) {
-       Boolean no = true;
+        Boolean follower = true;
         if (pageno < 0 || pageno == null) {
             pageno = 0;
         }
-       User user = userRepository.findByEmail(new SecurityController().loggedInUser());
+        User user = userRepository.findByEmail(new SecurityController().loggedInUser());
         final int PAGESIZE = 3; //number of posts on each page
         //get the next page based on its pagenumber, zerobased
         //also set pagesize, the number of posts on the page
@@ -50,10 +50,10 @@ public class PostController {
         model.addAttribute("hasNext", pagedResult.hasNext());
         model.addAttribute("hasPrevious", pagedResult.hasPrevious());
         model.addAttribute("posts", listPosts);//set the list with the 3 posts
-       if(user.getRole().equals("ROLE_BLOGGER")){
-           no = false;
-       }
-       model.addAttribute("no", no);
+        if (user.getRole().equals("ROLE_BLOGGER")) {
+            follower = false;
+        }
+        model.addAttribute("follower", follower);
         return "postallview";
 
     }
@@ -62,7 +62,7 @@ public class PostController {
     //Show all posts med paging
     @GetMapping("/posts/user/page/{pageno}")
     public String showPageForUser(@PathVariable() Integer pageno, Model model) {
-        Boolean no = true;
+        Boolean follower = true;
         if (pageno < 0 || pageno == null) {
             pageno = 0;
         }
@@ -90,10 +90,10 @@ public class PostController {
         model.addAttribute("hasNext", pagedResult.hasNext());
         model.addAttribute("hasPrevious", pagedResult.hasPrevious());
         model.addAttribute("posts", listPost);//set the list with the 3 posts
-        if(user.getRole().equals("ROLE_BLOGGER")){
-            no = false;
+        if (user.getRole().equals("ROLE_BLOGGER")) {
+            follower = false;
         }
-        model.addAttribute("no", no);
+        model.addAttribute("follower", follower);
 
         return "postallview";
 
@@ -106,13 +106,14 @@ public class PostController {
     public String addPost() {
         return "postaddview";
     }
+
     @PostMapping("/posts/add")
     public String addPostToDB(@RequestParam Map<String, String> allFormRequestParams) {
         Post post = new Post();
         post.setTitle(allFormRequestParams.get("title"));
         post.setText(allFormRequestParams.get("text"));
         post.setDateTime(LocalDateTime.now());
-        post.setGrading((double) 1);
+        post.setGrading((double) 5);
         User user = userRepository.findByEmail(sec.loggedInUser());
         user.addPost(post);
         userRepository.save(user);
@@ -133,7 +134,7 @@ public class PostController {
     //update post
     @GetMapping("/posts/update/{p_id}")
     public String updatePostById(Model model, @PathVariable Integer p_id) {
-        model.addAttribute("post",postRepository.findById(p_id).get());
+        model.addAttribute("post", postRepository.findById(p_id).get());
         return "postupdateview";
     }
 
@@ -151,9 +152,11 @@ public class PostController {
         User user = userRepository.findByEmail(new SecurityController().loggedInUser());
         Post post = postRepository.findById(p_id).get();
         Double grading = post.getGrading();
-        Double gradeToAdd = Double.parseDouble(allFormRequestParams.get("grading"+p_id));
-        Double newGrade = (grading+gradeToAdd)/(grading+5);
-        post.setGrading(newGrade);
+        Double gradingPerc = (grading - 1) / 4;
+        Double gradeToAdd = Double.parseDouble(allFormRequestParams.get("grading" + p_id));
+        Double gradeAddPerc = (gradeToAdd - 1) / 4;
+        Double newGrade = (gradingPerc + gradeAddPerc) / 2;
+        post.setGrading(newGrade*4+1);
         postRepository.save(post);
 
         return "redirect:/posts/page/0";

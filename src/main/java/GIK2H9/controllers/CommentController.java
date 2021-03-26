@@ -5,7 +5,10 @@ import GIK2H9.entity.Post;
 import GIK2H9.entity.User;
 import GIK2H9.repository.CommentRepository;
 import GIK2H9.repository.PostRepository;
+import GIK2H9.repository.TextSaveStrategy;
 import GIK2H9.repository.UserRepository;
+import GIK2H9.services.CommentSaveStrategy;
+import GIK2H9.services.SaveContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,11 +28,16 @@ PostRepository postRepository;
 @Autowired
 CommentRepository commentRepository;
 
+    @RequestMapping("/comment/user")
+    public String showBlogger(Model model) {
+        model.addAttribute("comments", commentRepository.findAllByUser(userRepository.findByEmail(sec.loggedInUser())));
+        return "commentallbyuserview";
+    }
     //show all comments
-    @GetMapping("/posts/comments/{p_id}")
+    @GetMapping("/posts/comment/{p_id}")
     public String getAllComments(Model model, @PathVariable Integer p_id) {
         Post post = postRepository.findById(p_id).get();
-        List<Comment> comments = commentRepository.findAllByPost(post);
+        List<Comment> comments = commentRepository.findAllByPostOrderByDateTimeDesc(post);
         model.addAttribute("comments", comments);
         return "postallcommentsview";
     }
@@ -50,11 +58,35 @@ CommentRepository commentRepository;
             comment.setText(allFormRequestParams.get("comment"));
             comment.setUser(user);
             comment.setDateTime(LocalDateTime.now());
-            comment.setGrading((double) 0);
             Post post = postRepository.findById(p_id).get();
             post.addComment(comment);
             postRepository.save(post);
 
         return "redirect:/posts/page/0";
+    }
+
+    @GetMapping("/comment/update/{c_id}")
+    public String updateCommentView(Model model, @PathVariable Integer c_id) {
+        model.addAttribute("comment", commentRepository.findById(c_id).get());
+        return "commentupdateview";
+    }
+
+    @PostMapping("/comment/update/{c_id}")
+    public String updateComment(@RequestParam Map<String, String> params, @PathVariable Integer c_id) {
+        Comment comment = commentRepository.findById(c_id).get();
+        comment.setText(params.get("text"));
+        commentRepository.save(comment);
+        return "redirect:/comment/user";
+    }
+
+    //delete comment
+    @GetMapping("/blogger/comment/delete/{c_id}")
+    public String deleteCommentById(@PathVariable Integer c_id) {
+        Comment comment = commentRepository.findById(c_id).get();
+        CommentSaveStrategy commentSaveStrategy = new TextSaveStrategy();
+        SaveContext context = new SaveContext(commentSaveStrategy);
+        context.save(comment);
+        commentRepository.deleteById(c_id);
+        return "redirect:/comment/user";
     }
 }//end class

@@ -42,16 +42,4 @@ public class UserController {
     @Autowired
     PasswordEncoder encoder;
 
-    //delete comment
-    @GetMapping("/blogger/comment/delete/{b_id}")
-    public String deleteCommentById(@PathVariable Integer b_id) {
-        Comment comment = commentRepository.findById(b_id).get();
-        CommentSaveStrategy commentSaveStrategy = new TextSaveStrategy();
-        SaveContext context = new SaveContext(commentSaveStrategy);
-        context.save(comment);
-        commentRepository.deleteById(b_id);
-        return "redirect:/blogger";
-    }
-
-
 }

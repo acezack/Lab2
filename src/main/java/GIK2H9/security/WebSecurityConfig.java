@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/initdb").permitAll()
+                .antMatchers("/blogger/comment/delete/**").hasAnyRole("BLOGGER","FOLLOWER")
                 .antMatchers("/blogger/**").hasRole("BLOGGER")
                 .antMatchers("/comment/**").hasRole("FOLLOWER")
                 .antMatchers("/posts/add").hasRole("BLOGGER")

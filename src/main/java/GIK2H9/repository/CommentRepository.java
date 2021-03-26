@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
    List<Comment> findAllByUser(User user);
-   List<Comment> findAllByPost(Post post);
+   List<Comment> findAllByPostOrderByDateTimeDesc(Post post);
 }

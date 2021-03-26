@@ -17,7 +17,7 @@ public class TextSaveStrategy implements CommentSaveStrategy {
 
         BufferedWriter writer;
         try {
-            writer = Files.newBufferedWriter(Paths.get("comment.txt"), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+            writer = Files.newBufferedWriter(Paths.get("deletedComments.txt"), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
             writer.write(comment.getText());
             writer.newLine();
             writer.close();

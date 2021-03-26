@@ -20,49 +20,24 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home</a>
             <a class="nav-item nav-link" href="/posts/page/0">All posts</a>
-            <a class="nav-item nav-link" href="/posts/user/page/0">My posts</a>
             <a class="nav-item nav-link" href="/logout">Log out</a>
         </div>
     </div>
 </nav>
 <div class="container">
-    <h2 style="text-align: center">Blogger page</h2>
-
-    <h4>Blog List</h4>
-    <a href="/posts/add">Add new blogpost</a>
-    <table class="table table-striped table-dark" style="table-layout: fixed; width: 100%;">
-        <thead>
-        <tr>
-            <th scope="col" style="width: 5%">ID</th>
-            <th scope="col" style="width: 20%">Title</th>
-            <th scope="col" style="width: 60%">Text</th>
-            <th scope="col" style="width: 15%">Manage</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#posts}}
-            <tr style="height: 20px; overflow: hidden">
-                <th scope="row" style="width: 5%">{{p_id}}</th>
-                <td style="width: 20%">{{title}}</td>
-                <td style="white-space: nowrap; width: 60%; overflow: hidden">{{text}}</td>
-                <td style="width: 15%"><a href="/posts/update/{{p_id}}">Update</a>  | <a href="/posts/delete/{{p_id}}">Delete</a> </td>
-            </tr>
-        {{/posts}}
-        </tbody>
-    </table>
-    </table>
+    <h2 style="text-align: center">All my comments</h2>
 
     <h4>Comment list</h4>
     <table class="table table-striped table-dark">
         <thead>
         <tr>
             <th scope="col" style="width: 5%">ID</th>
-            <th scope="col" style="width: 25%; overflow: hidden">Comment</th>
+            <th scope="col" style="width: 22%">Comment</th>
             <th scope="col" style="width: 15%">Post's title</th>
             <th scope="col" style="width: 8%">User ID</th>
-            <th scope="col" style="width: 15%">Email</th>
+            <th scope="col" style="width: 12%">Email</th>
             <th scope="col" style="width: 23%">Date</th>
-            <th scope="col" style="width: 9%">Manage</th>
+            <th scope="col" style="width: 15%">Manage</th>
         </tr>
         </thead>
         <tbody>
@@ -74,7 +49,7 @@
                 <td>{{post.p_id}}</td>
                 <td>{{user.email}}</td>
                 <td>{{dateTime}}</td>
-                <td><a href="/blogger/comment/delete/{{c_id}}">Delete</a> </td>
+                <td><a href="/comment/update/{{c_id}}">Update</a> | <a href="/blogger/comment/delete/{{c_id}}">Delete</a></td>
             </tr>
         {{/comments}}
         </tbody>

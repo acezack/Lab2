@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>All comments on a post</title>
+    <title>Update post</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -19,24 +19,24 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home</a>
-            <a class="nav-item nav-link" href="/posts/add">Add post</a>
             <a class="nav-item nav-link" href="/posts/page/0">All posts</a>
-            <a class="nav-item nav-link" href="/posts/user/page/0">My posts</a>
+            <a class="nav-item nav-link" href="/comment/user">My comments</a>
             <a class="nav-item nav-link" href="/logout">Log out</a>
         </div>
     </div>
 </nav>
-<div class="container">
-    <h2>All comments</h2>
-    <ol>
-        {{#comments}}
-            <li>
-                "{{text}}" <i class="small"> by {{user.email}} at {{dateTime.toLocalTime.getHour}}:{{dateTime.toLocalTime.getMinute}} on {{dateTime.toLocalDate}}</i>
-            </li>
-        {{/comments}}
-    </ol>
+<div class="container" style="width: 500px; margin: auto;">
+    <h1>Update post</h1>
 
-    <a href="/posts/page/0">Back to front page</a>
+    <form method="POST" action="/comment/update/{{comment.c_id}}">
+        <label>Text</label>
+        <textarea style="height: 500px" name="text" class="form-control">{{comment.text}}</textarea>
+        <br>
+        <button class="btn btn-primary" type="submit">Update comment</button>
+
+    </form>
+
+
 </div>
 </body>
 </html>
